@@ -1,13 +1,18 @@
-import { Alert, FlatList, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { styles } from './styles';
+import { useState } from 'react';
+import { Alert, FlatList, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 import { Participant } from '../../components/Participant';
+
+import { styles } from './styles';
 export function Home() {
-  const participants = ['Julio', 'John', 'Bob', 'Cesar', 'Ana', 'Rodrigo', 'Ribeiro', 'Joao', 'Renato', 'Antonio'];
+  const [participants, setParticipants] = useState(['Julio']);
+  const agora = new Date();
 
   function handleParticipantAdd() {
-    if (participants.includes("Julio")) {
+    if (participants.includes('Rodrigo')) {
       return Alert.alert(`Participante já existe,`)
     }
+    setParticipants(prevState => [...prevState, 'Ana']);
   }
 
   function handleParticipantRemove(name: string) {
@@ -24,7 +29,6 @@ export function Home() {
     ])
   }
 
-
   return (
     <View style={styles.container}>
 
@@ -33,7 +37,7 @@ export function Home() {
       </Text>
 
       <Text style={styles.eventDate} >
-        Data: Quinta-feira 14 de novembro de 2024
+        Data:{agora.toLocaleDateString()}
       </Text>
       <View style={styles.form}>
         <TextInput
