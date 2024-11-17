@@ -63,7 +63,7 @@ export function Home() {
 
       <FlatList
         data={participants}
-        keyExtractor={(item: string) => item}
+        keyExtractor={item => item}
         renderItem={({ item }) => (
           <Participant
             key={item}
@@ -74,7 +74,7 @@ export function Home() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
           <Text style={styles.emptyListText}>
-            Nenhum participante adicionado
+            Niguém chegou no evento, adicione um participante !
           </Text>
         )}
       />
